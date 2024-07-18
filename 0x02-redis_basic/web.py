@@ -12,7 +12,7 @@ redis_store = redis.Redis()
 '''
 
 
-def data_cache(method: Callable) -> Callable:
+def data_cacher(method: Callable) -> Callable:
     '''Caches the output of fetched data.
     '''
     @wraps(method)
@@ -30,7 +30,7 @@ def data_cache(method: Callable) -> Callable:
     return invoker
 
 
-@data_cache
+@data_cacher
 def get_page(url: str) -> str:
     '''Uses the requests module to obtain HTML content
     of a specific URL and returns it.
